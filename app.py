@@ -22,7 +22,7 @@ def get_transcript():
     try:
         transcript = YouTubeTranscriptApi.get_transcript(video_id, proxies=proxy)
         transcript_text = " ".join([t['text'] for t in transcript])
-        return jsonify({"transcript": transcript_text})
+        return jsonify({"transcript": transcript_text, "videoId": video_id})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
